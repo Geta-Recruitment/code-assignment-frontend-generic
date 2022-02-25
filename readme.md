@@ -16,11 +16,15 @@ Ps. We are working on improving the tasks. If you have any suggestions, please l
 
 1. Install dependencies.
 
-   `npm install`
+   ```console
+   npm install
+   ```
 
 2. Start server and client applications.
 
-   `npm run dev`
+   ```console
+   npm run dev
+   ```
 
 3. Start devving =)
 
