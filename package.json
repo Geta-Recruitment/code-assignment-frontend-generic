@@ -1,7 +1,7 @@
 {
   "name": "code-assignment-frontend-generic",
   "version": "1.0.0",
-  "description": "## Intro We are excited to have you here! Below you will find few tasks for frontend developer position. Time in parenthesis for each task indicates optimal time you should be spending on each of them. Please push all your changes to the `main` branch.",
+  "description": "Frontend code assignment project for frontend development candidates.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,18 +10,10 @@
     "dev:client": "npm --prefix ./client run dev",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Geta-Recruitment/code-assignment-frontend-generic.git"
-  },
-  "author": "",
+  "author": "Dzulqarnain Nasir",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Geta-Recruitment/code-assignment-frontend-generic/issues"
-  },
-  "homepage": "https://github.com/Geta-Recruitment/code-assignment-frontend-generic#readme",
   "devDependencies": {
-    "concurrently": "^7.0.0"
+    "concurrently": "7.0.0"
   },
   "engines": {
     "npm": ">=8.0.0",
