@@ -1,31 +1,47 @@
-# Pair programming session task
+# Frontend Developer Assignment
 
-This repo contains the startup files need for the pair programming session for front-end candidates.
+## Intro
 
-## Methodology
+We are excited to have you here! Below you will find few tasks for frontend developer position. Time in parenthesis for each task indicates optimal time you should be spending on each of them. Please push all your changes to the `main` branch.
 
-Driver and Navigator style. The candidate will act as the driver, and the interviewer will be the navigator.
+When you have completed the tasks, please assign pull request to Agnese (@AgneseAlksne) and also send an e-mail to recruitment@getadigital.com.
+
+We wish you good luck!
+
+Ps. We are working on improving the tasks. If you have any suggestions, please let us know!
 
 ## Instructions
 
-The main objective is to implement the front-end UI for a basic CRUD operation. The user should be able to:
+### Setup
 
-* create new users
-* retrieve a list of users
-* update individual user information
-* delete existing users
+1. Install dependencies.
 
-### TODO
+   `npm install`
 
-1. Set up a UI layer that renders a visual representation of the application data.
-2. Set up a data layer that handles application state.
-3. Set up an API layer that handles interactions with the REST API.
-4. Set up tests that are relevant to the project. Consider using TDD approach.
+2. Start server and client applications.
 
-### **Important**
+   `npm run dev`
 
-**The REST API does not persist the data that gets sent to it.** However, it does simulate a successful response when a compliant request is made. Candidate must take this into consideration when building the data layer.
+3. Start devving =)
+
+### Part 1 (Homework)
+
+1. Build product list page.
+2. Build product details page.
+3. Build shopping cart component.
+
+// TODO: add design sketch
+
+### Part 2 (Pair programming)
+
+Implement the shopping cart system. Users should be able to add, remove, and update items in the cart. The cart should be persistent across page reloads and navigation.
+
 
 ## Resources
 
-* REST API: https://my-json-server.typicode.com/dnasir/my-json-server/users
+| Endpoint        | Description                                                     | Supported methods |
+| --------------- | --------------------------------------------------------------- | ----------------- |
+| `/products`     | Returns a list of products.                                     | `GET`             |
+| `/products/:id` | Returns a single product.                                       | `GET`             |
+| `/cart`         | `GET` returns the shopping cart. `POST` to add item(s) to cart. | `GET`, `POST`     |
+| `/cart/:id`     | `PUT` to update cart item. `DELETE` to remove item from cart.   | `PUT`, `DELETE`   |

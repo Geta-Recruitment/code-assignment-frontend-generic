@@ -1,30 +1,30 @@
 {
-  "name": "simple-user-manager",
-  "version": "0.1.0",
-  "description": "",
+  "name": "code-assignment-frontend-generic",
+  "version": "1.0.0",
+  "description": "## Intro We are excited to have you here! Below you will find few tasks for frontend developer position. Time in parenthesis for each task indicates optimal time you should be spending on each of them. Please push all your changes to the `main` branch.",
+  "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm --prefix ./server ci && npm --prefix ./client ci",
+    "dev:server": "npm --prefix ./server run dev",
+    "dev:client": "npm --prefix ./client run dev",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Geta-Recruitment/code-assignment-frontend-generic.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Geta-Recruitment/code-assignment-frontend-generic/issues"
+  },
+  "homepage": "https://github.com/Geta-Recruitment/code-assignment-frontend-generic#readme",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.10.2",
-    "@typescript-eslint/parser": "^5.10.2",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^5.2.0",
-    "html-webpack-plugin": "^5.5.0",
-    "prettier": "^2.5.1",
-    "ts-loader": "^8.3.0",
-    "typescript": "^4.5.5",
-    "webpack": "^5.68.0",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "concurrently": "^7.0.0"
+  },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=14.0.0"
   }
 }
