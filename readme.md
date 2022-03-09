@@ -12,12 +12,19 @@ Ps. We are working on improving the tasks. If you have any suggestions, please l
 
 ## Instructions
 
+### Rules
+
+* **No frameworks.** Only JS/TS. Preferably TS.
+* **No pre-processors.** Only CSS.
+* You can use bundlers like webpack and rollup.
+* **Do not** modify the server code.
+
 ### Setup
 
 1. Install dependencies.
 
    ```console
-   npm install
+   npm ci
    ```
 
 2. Start server and client applications.
@@ -40,12 +47,6 @@ Ps. We are working on improving the tasks. If you have any suggestions, please l
 
 Implement the shopping cart system. Users should be able to add, remove, and update items in the cart. The cart should be persistent across page reloads and navigation.
 
-
 ## Resources
 
-| Endpoint        | Description                                                     | Supported methods |
-| --------------- | --------------------------------------------------------------- | ----------------- |
-| `/products`     | Returns a list of products.                                     | `GET`             |
-| `/products/:id` | Returns a single product.                                       | `GET`             |
-| `/cart`         | `GET` returns the shopping cart. `POST` to add item(s) to cart. | `GET`, `POST`     |
-| `/cart/:id`     | `PUT` to update cart item. `DELETE` to remove item from cart.   | `PUT`, `DELETE`   |
+See the OpenAPI docs at [`http://localhost:8081/api-docs`](http://localhost:8081/api-docs) after you start the server, for a detailed description of the RESTful API.
