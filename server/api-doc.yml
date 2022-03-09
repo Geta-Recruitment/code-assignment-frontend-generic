@@ -64,9 +64,8 @@ components:
     CartItem:
       type: object
       properties:
-        productId:
-          description: Product ID
-          type: string
+        product:
+          $ref: '#/components/schemas/Product'
         amount:
           description: Product count
           type: integer
@@ -85,15 +84,19 @@ components:
           description: Subtotal
           type: number
           format: float
+        totalDiscount:
+          description: Total amount of discount
+          type: number
+          format: float
         tax:
-          description: Taxes
+          description: Total amount of tax included in price
           type: number
           format: float
         total:
-          description: Grand total
+          description: Grand total after discounts
           type: number
           format: float
-      required: 
+      required:
         - items
         - totalItems
         - subtotal

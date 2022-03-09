@@ -7,7 +7,7 @@ module.exports = {
         const { id } = req.params;
         const product = products.find((x) => x.id === id);
         if (!product) {
-          res.status(404).end();
+          res.status(404).json({ message: 'Product not found' }).end();
         } else {
           res.status(200).json(product);
         }
