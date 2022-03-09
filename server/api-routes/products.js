@@ -6,6 +6,14 @@ module.exports = {
       try {
         const page = Number(req.query.page || 1);
         const limit = Number(req.query.limit || 10);
+        const sortBy = req.query.sortBy || 'id';
+        const order = req.query.order || 'asc';
+
+        products.sort((a, b) =>
+          (order === 'desc' ? a[sortBy] < b[sortBy] : a[sortBy] > b[sortBy])
+            ? 1
+            : -1
+        );
 
         const start = Math.max(0, page - 1) * limit;
         const end = start + limit;
@@ -19,7 +27,8 @@ module.exports = {
         };
 
         res.status(200).json(response);
-      } catch {
+      } catch (e) {
+        console.error(e);
         res.status(500).end();
       }
     }

@@ -123,6 +123,12 @@ paths:
         - name: 'limit'
           in: 'query'
           description: 'Paging size. If omitted, defaults to 10.'
+        - name: 'sortBy'
+          in: 'query'
+          description: 'Property to sort items by.'
+        - name: 'order'
+          in: 'query'
+          description: 'Ascending (asc) or descending (desc). Defaults to ascending.'
   '/products/:id':
     get:
       description: 'Returns single product'
