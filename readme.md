@@ -10,16 +10,14 @@ We wish you good luck!
 
 Ps. We are working on improving the tasks. If you have any suggestions, please let us know!
 
-## Instructions
-
-### Rules
+## Rules
 
 * **No frameworks.** Only JS/TS. Preferably TS.
 * **No pre-processors.** Only CSS.
 * You can use bundlers like webpack and rollup.
 * **Do not** modify the server code.
 
-### Setup
+## Setup
 
 1. Install dependencies.
 
@@ -35,17 +33,18 @@ Ps. We are working on improving the tasks. If you have any suggestions, please l
 
 3. Start devving =)
 
-### Part 1 (Homework)
+## Instructions
 
 1. Build product list page.
-2. Build product details page.
-3. Build shopping cart component.
+   - It should employ responsive design.
+   - It should have paging.
+   - It should allow for sorting.
+   - It should show the users both original and discounted prices.
 
-// TODO: add design sketch
-
-### Part 2 (Pair programming)
-
-Implement the shopping cart system. Users should be able to add, remove, and update items in the cart. The cart should be persistent across page reloads and navigation.
+2. Build shopping cart component.
+   - It should allow users to add/remove/update items to cart.
+   - It should be persistent across page reloads.
+   - The checkout button should output the contents of the cart to either console, or an alert box.
 
 ## Resources
 
