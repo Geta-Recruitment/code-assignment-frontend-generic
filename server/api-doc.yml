@@ -1,0 +1,147 @@
+openapi: '3.0.0'
+info:
+  title: Test e-commerce server with mock data.
+  version: '1.0.0'
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          description: Product ID
+          type: string
+        name:
+          description: Product Name
+          type: string
+        description:
+          description: Product description
+          type: string
+        image:
+          description: Product image
+          type: string
+        price:
+          description: Price per unit
+          type: number
+          format: float
+        discount:
+          description: Price discount
+          type: integer
+          format: int32
+        isAvailable:
+          description: Product availability
+          type: boolean
+      required:
+        - id
+        - name
+        - price
+        - isAvailable
+    ProductList:
+      type: object
+      properties:
+        items:
+          description: 'List of products'
+          type: 'array'
+          items:
+            $ref: '#/components/schemas/Product'
+        page:
+          description: 'Current page'
+          type: 'integer'
+        limit:
+          description: 'Current page size'
+          type: 'integer'
+        totalPages:
+          description: 'Total number of pages'
+          type: 'integer'
+        totalItems:
+          description: 'Total number of items'
+          type: 'integer'
+      required:
+        - items
+        - page
+        - limit
+        - totalPages
+        - totalItems
+    CartItem:
+      type: object
+      properties:
+        productId:
+          description: Product ID
+          type: string
+        amount:
+          description: Product count
+          type: integer
+    Cart:
+      type: object
+      properties:
+        items:
+          description: Cart items
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+        totalItems:
+          description: Total number of items.
+          type: integer
+        subtotal:
+          description: Subtotal
+          type: number
+          format: float
+        tax:
+          description: Taxes
+          type: number
+          format: float
+        total:
+          description: Grand total
+          type: number
+          format: float
+      required: 
+        - items
+        - totalItems
+        - subtotal
+        - tax
+        - total
+paths:
+  '/products':
+    get:
+      description: 'Returns all products'
+      responses:
+        200:
+          description: 'OK'
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ProductList'
+      parameters:
+        - name: 'page'
+          in: 'query'
+          description: 'Page to return. If omitted, defaults to 1.'
+        - name: 'limit'
+          in: 'query'
+          description: 'Paging size. If omitted, defaults to 10.'
+  '/cart':
+    get:
+      description: Returns shopping cart
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Cart'
+    post:
+      description: Adds item to cart
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              properties:
+                productId:
+                  type: string
+                amount:
+                  type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Cart'
