@@ -39,7 +39,7 @@ module.exports = {
         );
         if (index === -1)
           return res
-            .status(400)
+            .status(404)
             .json({ message: 'Item does not exist in cart' })
             .end();
 
@@ -67,7 +67,7 @@ module.exports = {
         );
         if (index === -1)
           return res
-            .status(400)
+            .status(404)
             .json({ message: 'Item does not exist in cart' })
             .end();
 

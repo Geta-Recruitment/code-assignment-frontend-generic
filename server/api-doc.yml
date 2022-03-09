@@ -30,11 +30,6 @@ components:
         isAvailable:
           description: Product availability
           type: boolean
-      required:
-        - id
-        - name
-        - price
-        - isAvailable
     ProductList:
       type: object
       properties:
@@ -55,12 +50,6 @@ components:
         totalItems:
           description: 'Total number of items'
           type: 'integer'
-      required:
-        - items
-        - page
-        - limit
-        - totalPages
-        - totalItems
     CartItem:
       type: object
       properties:
@@ -96,12 +85,26 @@ components:
           description: Grand total after discounts
           type: number
           format: float
+    CartItemRequest:
+      type: object
+      properties:
+        productId:
+          description: Product ID
+          type: string
+        amount:
+          description: Amount of item in cart. 0 removes the item from the cart.
+          type: integer
+          minimum: 0
       required:
-        - items
-        - totalItems
-        - subtotal
-        - tax
-        - total
+        - productId
+        - amount
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          description: Error message
+          type: string
+
 paths:
   '/products':
     get:
@@ -120,6 +123,22 @@ paths:
         - name: 'limit'
           in: 'query'
           description: 'Paging size. If omitted, defaults to 10.'
+  '/products/:id':
+    get:
+      description: 'Returns single product'
+      responses:
+        200:
+          description: 'OK'
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Product'
+        404:
+          description: Not Found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/cart':
     get:
       description: Returns shopping cart
@@ -136,11 +155,7 @@ paths:
         content:
           'application/json':
             schema:
-              properties:
-                productId:
-                  type: string
-                amount:
-                  type: integer
+              $ref: '#/components/schemas/CartItemRequest'
       responses:
         200:
           description: OK
@@ -148,3 +163,78 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/Cart'
+        400:
+          description: Bad Request
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/cart/:productId':
+    get:
+      description: Returns shopping cart item
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/CartItem'
+        400:
+          description: Bad Request
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        404:
+          description: Not Found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      description: Updates shopping cart item
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/CartItemRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Cart'
+        400:
+          description: Bad Request
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        404:
+          description: Not Found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      description: Deletes shopping cart item
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Cart'
+        400:
+          description: Bad Request
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        404:
+          description: Not Found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
