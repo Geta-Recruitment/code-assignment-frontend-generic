@@ -12,9 +12,9 @@ Ps. We are working on improving the tasks. If you have any suggestions, please l
 
 ## Rules
 
-* **No frameworks.** Only JS/TS. Preferably TS.
-* **No pre-processors.** Only CSS.
-* You can use bundlers like webpack and rollup.
+* **No frameworks i.e. React, Vue, Angular.** Utility libraries like Axios and Redux are fine.
+* CSS pre-processors are fine, but you'll have to set it up yourself.
+* TypeScript is preferred.
 * **Do not** modify the server code.
 
 ## Setup
@@ -37,14 +37,18 @@ Ps. We are working on improving the tasks. If you have any suggestions, please l
 
 1. Build product list page.
    - It should employ responsive design.
-   - It should have paging.
-   - It should allow for sorting.
+   - It should have paging. See API docs for more info.
+   - It should allow for sorting. See API docs for more info.
    - It should show the users both original and discounted prices.
+   - Be creative with the UI design.
 
 2. Build shopping cart component.
    - It should allow users to add/remove/update items to cart.
-   - It should be persistent across page reloads.
+   - It should show all the cart data provided by the REST API.
+   - It should be persistent across page reloads. Use the shopping cart API endpoint for this.
    - The checkout button should output the contents of the cart to either console, or an alert box.
+
+3. Add some tests using your testing framework of choice i.e. Jest, Jasmine, etc.
 
 ## Resources
 
